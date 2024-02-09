@@ -12,7 +12,12 @@ public class User {
     private String Email;
     private String Password;
 
+    //No Arg Constuctor
+    public User() {
 
+    }
+
+    //If no ID is created yet. FOr
     public User(String fname, String lname, String email, String pass){
         this.FirstName =fname;
         this.LastName = lname;
@@ -27,6 +32,8 @@ public class User {
         this.Email = email;
         this.Password  = pass;
     }
+
+
 
     public Integer getID(){return ID;}
     public void setID(Integer ID){this.ID = ID;}
