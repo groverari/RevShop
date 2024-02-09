@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer ID;
-    private String FirstName;
-    private String LastName;
-    private String Email;
-    private String Password;
+    private String first_name;
+    private String last_name;
+    private String email;
+    private String password;
 
     //No Arg Constuctor
     public User() {
@@ -18,38 +18,61 @@ public class User {
     }
 
     //If no ID is created yet. FOr
-    public User(String fname, String lname, String email, String pass){
-        this.FirstName =fname;
-        this.LastName = lname;
-        this.Email = email;
-        this.Password  = pass;
+    public User(String fname, String lname, String email, String pass) {
+        this.first_name = fname;
+        this.last_name = lname;
+        this.email = email;
+        this.password = pass;
     }
 
-    public User(Integer user_id, String fname, String lname, String email, String pass){
+    public User(Integer user_id, String fname, String lname, String email, String pass) {
         this.ID = user_id;
-        this.FirstName =fname;
-        this.LastName = lname;
-        this.Email = email;
-        this.Password  = pass;
+        this.first_name = fname;
+        this.last_name = lname;
+        this.email = email;
+        this.password = pass;
     }
 
 
+    public Integer getID() {
+        return ID;
+    }
 
-    public Integer getID(){return ID;}
-    public void setID(Integer ID){this.ID = ID;}
+    public void setID(Integer ID) {
+        this.ID = ID;
+    }
 
-    public String getFirstName(){return FirstName;}
-    public void setFirstName(String FirstName){this.FirstName = FirstName;}
+    public String getFirst_name() {
+        return first_name;
+    }
 
-    public String getLastName(){return LastName;}
-    public void setLastName(String LastName){this.LastName = LastName;}
+    public void setFirst_name(String FirstName) {
+        this.first_name = FirstName;
+    }
 
-    public String getEmail(){return Email;}
-    public void setEmail(String Email){this.Email = Email;}
+    public String getLast_name() {
+        return last_name;
+    }
 
-    public String getPassword(){return Password;}
-    public void setPassWord(String Password){this.Password = Password;}
+    public void setLast_name(String LastName) {
+        this.last_name = LastName;
+    }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String Email) {
+        this.email = Email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassWord(String Password) {
+        this.password = Password;
+    }
 
 
     /**
@@ -60,8 +83,8 @@ public class User {
 
     //Overriding toString in case of debugging needs
     @Override
-    public String toString(){
-        return  "USER: "+ ID + " " + FirstName + " " + LastName;
+    public String toString() {
+        return "USER: " + ID + " " + first_name + " " + last_name;
     }
 
 }

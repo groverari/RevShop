@@ -1,6 +1,9 @@
 package dev.grover.RevShop.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Order {
@@ -16,19 +19,21 @@ public class Order {
     private String zip;
 
 
-    public Order(){}
+    public Order() {
+    }
 
-    public Order(Integer user_id, Double total, String street, String city, String state,  String zip){
-        this.user_id =user_id;
+    public Order(Integer user_id, Double total, String street, String city, String state, String zip) {
+        this.user_id = user_id;
         this.total = total;
         this.street = street;
         this.city = city;
         this.state = state;
         this.zip = zip;
     }
-    public Order(Integer Id, Integer user_id, Double total, String street, String city, String state,  String zip){
+
+    public Order(Integer Id, Integer user_id, Double total, String street, String city, String state, String zip) {
         this.ID = Id;
-        this.user_id =user_id;
+        this.user_id = user_id;
         this.total = total;
         this.street = street;
         this.city = city;
@@ -36,46 +41,80 @@ public class Order {
         this.zip = zip;
     }
 
-    public Integer getID(){return ID;}
-    public void setID(Integer ID){this.ID = ID;}
+    public Integer getID() {
+        return ID;
+    }
 
-    public Integer getUser_id(){ return user_id;}
-    public void setUser_id(Integer user_id){this.user_id = user_id;}
+    public void setID(Integer ID) {
+        this.ID = ID;
+    }
 
-    public Double getTotal(){return total;}
-    public void setTotal(Double total){this.total = total;}
+    public Integer getUser_id() {
+        return user_id;
+    }
 
-    public String getStreet(){return street;}
-    public void setStreet(String street){this.street = street;}
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
 
-    public String getCity(){return city;}
-    public void setCity(String city){this.city = city;}
+    public Double getTotal() {
+        return total;
+    }
 
-    public String getState(){return state;}
-    public void setState(String state){this.state = state;}
+    public void setTotal(Double total) {
+        this.total = total;
+    }
 
-    public String getZip(){return zip;}
-    public void setZip(String zip){this.zip = zip;}
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
 
 
     @Override
-    public boolean equals(Object obj){
-        if(this == obj) return true;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
 
-        if(obj == null) return  false;
+        if (obj == null) return false;
 
-        if(getClass() != obj.getClass()) return false;
+        if (getClass() != obj.getClass()) return false;
 
         Order other = (Order) obj;
-        if(ID == null && other.getID() != null) return false;
+        if (ID == null && other.getID() != null) return false;
 
-        if(ID == other.getID()) return true;
-        else return false;
+        return ID == other.getID();
     }
 
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Order #: " + ID +
                 " For: " + user_id +
                 " Total: " + total +
