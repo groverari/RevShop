@@ -1,5 +1,6 @@
 package dev.grover.RevShop.service;
 
+import dev.grover.RevShop.DTO.LoginDTO;
 import dev.grover.RevShop.entity.User;
 import dev.grover.RevShop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,15 @@ public class UserService {
     @Autowired
     public UserService(UserRepository u) {
         this.userRepository = u;
+    }
+
+    public User login(LoginDTO l) {
+        if (userRepository.existsByEmail(l.getUsername())) {
+            User u = userRepository.findByEmail(l.getUsername());
+            if (u.getPassword().compareTo(l.getPassword()) == 0)
+                return u;
+        }
+        return null;
     }
 
     public List<User> getAllUsers() {

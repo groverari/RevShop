@@ -1,5 +1,6 @@
 package dev.grover.RevShop.controller;
 
+import dev.grover.RevShop.DTO.LoginDTO;
 import dev.grover.RevShop.entity.User;
 import dev.grover.RevShop.service.UserService;
 
@@ -20,10 +21,24 @@ public class RevShopController {
         this.userService = u;
     }
 
+    //Get ALL users is just to ensure the API is working
     @CrossOrigin
     @GetMapping("users")
     public ResponseEntity<List<User>> allUsers() {
-        
         return ResponseEntity.status(200).body(userService.getAllUsers());
     }
+
+    @CrossOrigin
+    @PostMapping("login")
+    public ResponseEntity<?> login(@RequestBody LoginDTO l) {
+        User u = userService.login(l);
+        if (u == null) {
+            //Unable to find a username or the password was incorrect
+            System.out.println("No one found");
+            return ResponseEntity.status(401).body("Try Again Sucker");
+        }
+        return ResponseEntity.status(200).body(u);
+    }
+
+
 }
