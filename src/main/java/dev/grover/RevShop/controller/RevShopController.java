@@ -40,5 +40,16 @@ public class RevShopController {
         return ResponseEntity.status(200).body(u);
     }
 
+    @CrossOrigin
+    @PostMapping("register")
+    public ResponseEntity<?> register(@RequestBody User u) {
+        User x = userService.register(u);
+
+        if (x == null) {
+            return ResponseEntity.status(400).body("Username already exists");
+        }
+        return ResponseEntity.status(200).body(x);
+    }
+
 
 }
