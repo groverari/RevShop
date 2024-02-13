@@ -13,12 +13,15 @@ public class Cart {
     @Id
     private Integer product_id;
 
+    private Double quantity;
+
     public Cart() {
     }
 
-    public Cart(Integer user_id, Integer product_id) {
+    public Cart(Integer user_id, Integer product_id, Double quantity) {
         this.user_id = user_id;
         this.product_id = product_id;
+        this.quantity = quantity;
     }
 
     public Integer getUser_id() {
@@ -35,6 +38,14 @@ public class Cart {
 
     public void setProduct_id(Integer product_id) {
         this.product_id = product_id;
+    }
+
+    public Double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Double quantity) {
+        this.quantity = quantity;
     }
 
     @Override

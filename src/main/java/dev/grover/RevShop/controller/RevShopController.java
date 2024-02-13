@@ -1,7 +1,11 @@
 package dev.grover.RevShop.controller;
 
 import dev.grover.RevShop.DTO.LoginDTO;
+import dev.grover.RevShop.entity.Cart;
+import dev.grover.RevShop.entity.Product;
 import dev.grover.RevShop.entity.User;
+import dev.grover.RevShop.service.CartService;
+import dev.grover.RevShop.service.ProductService;
 import dev.grover.RevShop.service.UserService;
 
 import java.util.List;
@@ -15,10 +19,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class RevShopController {
     UserService userService;
+    ProductService productService;
+    CartService cartService;
 
     @Autowired
-    public RevShopController(UserService u) {
+    public RevShopController(UserService u, ProductService p, CartService c) {
         this.userService = u;
+        this.productService = p;
+        this.cartService = c;
     }
 
     //Get ALL users is just to ensure the API is working
@@ -51,5 +59,18 @@ public class RevShopController {
         return ResponseEntity.status(200).body(x);
     }
 
+    @CrossOrigin
+    @GetMapping("products")
+    public ResponseEntity<List<Product>> getProducts() {
+        return ResponseEntity.status(200).body(productService.getAllProducts());
+    }
+
+    @CrossOrigin
+    @PostMapping("addToCart")
+    public ResponseEntity<Boolean> addToCart(@RequestBody Cart c) {
+        boolean success = cartService.add(c);
+        int status = success ? 202 : 404;
+        return ResponseEntity.status(status).body(success);
+    }
 
 }
