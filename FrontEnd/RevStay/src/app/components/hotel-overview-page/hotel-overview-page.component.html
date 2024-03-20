@@ -1,0 +1,81 @@
+
+@if(hotel) {
+<div class="grid mx-2 my-2">
+  <div class="col">
+    <img class="img" src="{{ hotel.img }}" alt="{{ hotel.name }}" />
+  </div>
+  <div class="col">
+    <div class="align-i-c">
+      <p class="name">{{ hotel.name }}</p>
+    </div>
+    <div class="align-i-c">
+      <p>
+        {{ hotel.street }} {{ hotel.city }} , {{ hotel.state }} {{ hotel.zip }}
+      </p>
+    </div>
+    <div class="d-flex align-i-c justify-c-b">
+      <div>
+        <p>Rooms as low as:</p>
+        <p class="price">${{ minPrice }}</p>
+      </div>
+
+      <div class="d-flex align-i-c">
+        @if (avgRating) {
+        <span class="mr-3">
+          <p-rating [(ngModel)]="avgRating" [readonly]="true" [cancel]="false">
+          </p-rating>
+        </span>
+        <span class="txt">
+          <b>{{ hotel.reviewList?.length }}</b>
+          <span> reviews</span>
+        </span>
+        }
+      </div>
+    </div>
+    <div class="flex align-i-c">
+      <p>{{ hotel.description }}</p>
+    </div>
+  </div>
+</div>
+
+@if (currentlyBooking) {
+  <p-fieldset legend="Book your room">
+  <app-create-booking  [hotel]="hotel" [room]="bookingRoom"></app-create-booking>
+  </p-fieldset>
+}
+@else {
+<div class="mx-2 my-2">
+  <p-fieldset legend="Choose your room" class="m-auto">
+    <div class="grid-container">
+      @for (room of hotel.roomList; track $index) {
+      <div class="grid-item">
+        <p-card
+          header="{{ room.roomName }}"
+          subheader="We have {{ room.quantity }} left"
+          [style]="{ width: '360px' }"
+        >
+          <ng-template pTemplate="header">
+            <img alt="Card" src="{{ room.img }}" />
+          </ng-template>
+          <p>{{ room.description }}</p>
+          <ng-template pTemplate="footer">
+            <div class="flex align-i-c justify-c-b">
+              <span class="price">{{ "$" + room.price }}</span>
+              <p-button label="Reserve" class="al" (click)="bookRoom(room)"></p-button>
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
+      }
+      <!-- Add more items as needed -->
+    </div>
+  </p-fieldset>
+</div>
+}
+
+<div class="mx-2 my-2">
+ <app-review-view [inputHotel] = "hotel" [inputAvgRating] = "avgRating"></app-review-view>
+</div>
+
+}
+

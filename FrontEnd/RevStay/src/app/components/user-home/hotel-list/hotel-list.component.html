@@ -1,0 +1,14 @@
+@if(hotelList.length)
+{ 
+    @for (hotel of hotelList; track hotelList) 
+    {
+        @if (hotel.roomList?.length) {
+           <app-hotel [inputHotel]="hotel"></app-hotel> 
+        }
+    } 
+} 
+@else {
+    <h2>No matches</h2>
+    <p>Try removing filters.</p>
+}
+

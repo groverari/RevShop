@@ -1,0 +1,10 @@
+.container
+{
+    display:inline-flex;
+    justify-content: center;
+}
+
+.justify-end
+{
+    justify-content:end;
+}

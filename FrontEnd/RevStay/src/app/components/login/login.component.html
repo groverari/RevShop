@@ -1,0 +1,48 @@
+<div class="wrapper">
+  <div id="login-content">
+    <p-selectButton
+      [options]="stateOptions"
+      [(ngModel)]="userType"
+      optionLabel="label"
+      optionValue="value"
+    ></p-selectButton>
+    @if (userType){
+    <form class="login-form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+      <h1>{{ userType }} Login</h1>
+      <div class="form-group">
+        <p class="error-msg">{{ emailError }}</p>
+        <label for="exampleInputEmail1">Email:</label>
+        <br />
+        <input
+          type="email"
+          formControlName="email"
+          aria-describedby="email"
+          placeholder="Enter email"
+        />
+      </div>
+      <div class="form-group">
+        <p class="error-msg">{{ passwordError }}</p>
+        <label for="password">Password:</label>
+        <br />
+        <input
+          type="password"
+          formControlName="password"
+          aria-describedby="password"
+          placeholder="Enter Password"
+        />
+      </div>
+      <button class="primary-btn" id="login-btn" type="submit">Login</button>
+      <span class="error-msg">{{ loginError }}</span>
+    </form>
+    } @else {
+    <h3>Please Select a Login Type</h3>
+    }
+    <div id="register">
+      <h3 class="register-title" id="title-left">Not a Member?</h3>
+      <h3 class="register-title" id="title-right">...Join Today</h3>
+      <button class="primary-btn" id="register-btn" (click)="register()">
+        Register
+      </button>
+    </div>
+  </div>
+</div>

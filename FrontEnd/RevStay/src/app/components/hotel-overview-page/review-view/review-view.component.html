@@ -1,0 +1,130 @@
+<p-fieldset legend="Reviews">
+  <div class="grid mx-2 my-2 justify-c-b">
+    <div class="col">
+      <div class="rev-start-txt">Share your experience</div>
+      <p>
+        Orci a scelerisque purus semper eget duis at tellus at. Ut diam quam
+        nulla porttitor.
+      </p>
+      <p-button label="Write a review" (onClick)="showDialog()"></p-button>
+      <p-dialog
+        [(visible)]="dialogVisible"
+        [modal]="true"
+        [style]="{ width: '50vw' }"
+        [draggable]="false"
+        [resizable]="false"
+        [appendTo]="'body'"
+      >
+        <p-header>Leave a Review</p-header>
+
+        <div class="d-grid align-i-c justify-c">
+          <div class="my-2">
+            <label for="rating">Rating</label>
+          </div>
+          <div>
+            <p-rating [(ngModel)]="reviewRating" [cancel]="false"> </p-rating>
+            @if(!reviewRating && submitClicked) {
+            <p-message severity="error" text="Rating is required"></p-message>
+            }
+          </div>
+
+          <span class="p-float-label my-4">
+            <textarea
+              id="float-input"
+              rows="10"
+              cols="40"
+              pInputTextarea
+              [autoResize]="true"
+              [(ngModel)]="reviewText"
+            ></textarea>
+            <label for="float-input">Summary</label>
+          </span>
+          @if(!reviewText && submitClicked) {
+          <p-message
+            severity="error"
+            text="Review text is required"
+          ></p-message>
+          }
+        </div>
+
+        <p-footer>
+          <button
+            type="button"
+            pButton
+            icon="pi pi-times"
+            (click)="dialogVisible = false"
+            label="Cancel"
+          ></button>
+          <button
+            type="button"
+            pButton
+            icon="pi pi-check"
+            (click)="submitReview()"
+            label="Submit"
+          ></button>
+        </p-footer>
+      </p-dialog>
+    </div>
+    <div class="col rev-mid">
+      <div>
+        <div class="rev-mid-txt">
+          <b>{{ hotel.reviewList?.length }}</b>
+          <span> Reviews</span>
+        </div>
+        <div class="rev-mid-star">
+          <p-rating [(ngModel)]="avgRating" [readonly]="true" [cancel]="false">
+          </p-rating>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="align-i-c">
+        <p class="name">{{ hotel.name }}</p>
+      </div>
+      <div class="align-i-c">
+        <p>
+          {{ hotel.street }} {{ hotel.city }} , {{ hotel.state }}
+          {{ hotel.zip }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  @if(hotel.reviewList?.length) {
+  <div class="list-container">
+    <ul class="list">
+      @for (review of hotel.reviewList; track $index) {
+      <li class="lst-item py-4">
+        <div class="d-flex justify-c-b">
+          <div class="d-flex align-i-c">
+            <p-avatar icon="pi pi-user" size="large" shape="circle"></p-avatar>
+            <p class="mx-2">User {{ review.userId }}</p>
+          </div>
+
+          <div>
+            <span class="mr-1">
+              <p-rating
+                [(ngModel)]="review.rating"
+                [readonly]="true"
+                [cancel]="false"
+              >
+              </p-rating>
+            </span>
+            <b> {{ review.rating }}</b>
+          </div>
+        </div>
+        <div class="my-2">
+          <p>{{ review.text }}</p>
+        </div>
+
+        @if(review.feedback)
+        {
+            <app-feedback [inputFeedback]="review.feedback" [inputName]="hotel.name"></app-feedback>
+        }
+
+      </li>
+      }
+    </ul>
+  </div>
+  }
+</p-fieldset>

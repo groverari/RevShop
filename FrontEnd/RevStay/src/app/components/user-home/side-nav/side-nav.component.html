@@ -1,0 +1,125 @@
+<h3>Filter by</h3>
+
+<div class="grid">
+  @if (selectedCity !== undefined) {
+  <div class="col">
+    <p-chip
+      [style]="{
+        backgroundColor: 'var(--primary-color)',
+        color: 'var(--primary-color-text)'
+      }"
+      label="{{ selectedCity.name }}"
+      [removable]="true"
+      (onRemove)="clear(selectedCity.name)"
+    ></p-chip>
+  </div>
+
+  } @if(selectedPrice !== undefined) {
+  <div class="col">
+    <p-chip
+      [style]="{
+        backgroundColor: 'var(--primary-color)',
+        color: 'var(--primary-color-text)'
+      }"
+      label=" < $ {{ selectedPrice }}"
+      [removable]="true"
+      (onRemove)="clear(selectedPrice)"
+    ></p-chip>
+  </div>
+
+  } @if(selectedRating !== undefined) {
+  <div class="col">
+    <p-chip
+      [style]="{
+        backgroundColor: 'var(--primary-color)',
+        color: 'var(--primary-color-text)'
+      }"
+      label="{{ selectedRating }} Stars or more"
+      [removable]="true"
+      (onRemove)="clear(selectedRating)"
+    ></p-chip>
+  </div>
+  }
+</div>
+
+<section>
+  <p-listbox
+    [options]="cities"
+    [(ngModel)]="selectedCity"
+    [filter]="true"
+    optionLabel="name"
+    filterPlaceHolder="Cities"
+    (onChange)="applyFilter()"
+  ></p-listbox>
+</section>
+
+<p-divider></p-divider>
+
+<p-accordion [multiple]="true" [activeIndex]="[0, 1, 2]"
+  ><section>
+    <p-accordionTab header="Price per night">
+      <p-slider
+        [animate]="true"
+        [(ngModel)]="selectedPrice"
+        [max]="5000"
+        (onSlideEnd)="applyFilter()"
+      ></p-slider>
+      <br />
+      <p-inputGroup>
+        <p-inputGroupAddon>$</p-inputGroupAddon>
+        <input
+          type="number"
+          pInputText
+          placeholder="Price"
+          [(ngModel)]="selectedPrice"
+          class="w-full"
+        />
+
+        <p-inputGroupAddon>.00</p-inputGroupAddon> </p-inputGroup
+      ><small>Hotels priced less than</small>
+    </p-accordionTab>
+  </section>
+  <br />
+  <section>
+    <p-accordionTab header="Average Star rating">
+      <div class="container flex-wrap gap-1">
+        <p-button
+          label="1"
+          icon="pi pi-star-fill"
+          iconPos="right"
+          (onClick)="handleRatingChange(1)"
+        ></p-button>
+        <p-button
+          label="2"
+          icon="pi pi-star-fill"
+          iconPos="right"
+          (onClick)="handleRatingChange(2)"
+        ></p-button>
+        <p-button
+          label="3"
+          icon="pi pi-star-fill"
+          iconPos="right"
+          (onClick)="handleRatingChange(3)"
+        ></p-button>
+        <p-button
+          label="4"
+          icon="pi pi-star-fill"
+          iconPos="right"
+          (onClick)="handleRatingChange(4)"
+        ></p-button>
+        <p-button
+          label="5"
+          icon="pi pi-star-fill"
+          iconPos="right"
+          (onClick)="handleRatingChange(5)"
+        ></p-button>
+      </div>
+    </p-accordionTab>
+  </section>
+</p-accordion>
+
+<!-- <p-divider></p-divider> -->
+<!-- 
+<div class="grid justify-end">
+  <p-button (onClick)="applyFilter()">Show results</p-button>
+</div> -->

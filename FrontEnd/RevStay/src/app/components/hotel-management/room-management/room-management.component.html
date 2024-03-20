@@ -1,0 +1,12 @@
+<button class="primary-btn" (click)="goBack()">Return to Hotels</button>
+<div id="header">
+  <h1>Current Rooms in {{ hotel.name }}</h1>
+  <button class="primary-btn" (click)="addRoom()">Add a New Room</button>
+</div>
+<div id="rooms">
+  @if(rooms?.length != 0){ @for(room of rooms; track room.roomId){
+  <app-room-card class="room" [room]="room"></app-room-card>
+  } } @else {
+  <h1 id="no-rooms">There are currently no rooms. Please add some rooms.</h1>
+  }
+</div>

@@ -1,0 +1,17 @@
+<nav>
+  <img id="logo" src="../../../assets/RevStay.jpg" />
+  <h2>Welcome, {{ name | titlecase }}</h2>
+  <div>
+    <div class="nav-links">
+      <button class="primary-btn nav-btn" routerLink="/user/home">
+        Home
+      </button>
+      <button class="primary-btn nav-btn" routerLink="/user/booking">My Reservations</button>
+      <!-- <button class="primary-btn nav-btn" routerLink="/user/booking">
+        Previous Reservations
+      </button> -->
+      <button class="primary-btn nav-btn" (click)="logout()">Log Out</button>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

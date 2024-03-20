@@ -1,0 +1,25 @@
+.header {
+  margin: 30px;
+  display: flex;
+  column-gap: 10%;
+  justify-content: space-around;
+}
+#header {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#form-container {
+  margin: 50px;
+}
+
+#hotels-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.hotel-card {
+  width: 33%;
+  border-radius: 5px;
+}

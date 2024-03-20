@@ -1,0 +1,139 @@
+<div id="form-container">
+  <h1>Edit {{ hotel.name }}</h1>
+  <button class="primary-btn" (click)="goBack()">Back to Overview</button>
+  @switch (activeIndex) { @case (0){
+  <form
+    class="add-hotel-form centered"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit(form)"
+  >
+    <span class="error">{{ error }}</span>
+    <div class="form-group">
+      <label for="name">Hotel Name</label>
+      <input
+        type="text"
+        formControlName="name"
+        placeholder="Enter Hotel Name"
+      />
+      <br />
+      @if(this.form.get('name')!.invalid && (this.form.get('name')!.dirty ||
+      this.form.get('name')!.touched)){
+      <small class="danger-text">This field is required</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        formControlName="description"
+        aria-describedby="hotel description"
+        placeholder="A brief description of the hotel"
+      ></textarea>
+      <br />
+      @if(this.form.get('description')!.invalid &&
+      (this.form.get('description')!.dirty ||
+      this.form.get('description')!.touched)){
+      <small class="danger-text">This field is required</small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="street">Address</label>
+      <input
+        type="text"
+        aria-describedby="street address"
+        formControlName="street"
+        placeholder="Street Address"
+      />
+      <br />
+      @if(this.form.get('street')!.invalid && (this.form.get('street')!.dirty ||
+      this.form.get('street')!.touched)){
+      <small class="danger-text">This field is required</small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input
+        type="text"
+        aria-describedby="city name"
+        formControlName="city"
+        placeholder="City"
+      />
+      <br />
+      @if(this.form.get('city')!.invalid && this.form.get('city')!.touched){
+      <small class="danger-text">This field is required</small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="state">State Code</label>
+      <input
+        type="text"
+        aria-describedby="State Name"
+        formControlName="state"
+        placeholder="State"
+      />
+      <br />
+      @if(this.form.get('state')!.invalid && this.form.get('state')!.touched){
+      @if(this.form.get('state')!.hasError('required')){
+      <small class="danger-text">This field is required</small>
+      } @if(this.form.get('state')!.hasError('pattern')){
+      <small class="danger-text">Only the State Code please</small>
+      } }
+    </div>
+    <div class="form-group">
+      <label for="zip">Zip Code</label>
+      <input
+        type="text"
+        aria-describedby="zip"
+        formControlName="zip"
+        placeholder="5 Digit Zip Code"
+      />
+      <br />
+      @if(this.form.get('zip')!.invalid && (this.form.get('zip')!.dirty ||
+      this.form.get('zip')!.touched)){
+      <small class="danger-text">This field is required</small>
+      }
+    </div>
+    <!--Need to add an image upload area here-->
+    <button type="submit" class="primary-btn">Next</button>
+  </form>
+  } @case (1){
+  <div class="centered">
+    <h1>Image Upload will go here</h1>
+    <div class="form-group">
+      <label>Image URL: </label>
+      <input type="text" [(ngModel)]="img" [defaultValue]="img" />
+    </div>
+    <div class="btn-group">
+      <button class="primary-btn" (click)="prev()">Previous</button>
+      <button class="primary-btn" (click)="forward()">Next</button>
+    </div>
+  </div>
+  } @case (2){
+  <div>
+    <h2>Confirm the details before Submitting:</h2>
+    <div id="hotel-details">
+      <section>
+        <h3>{{ form.value.name }}</h3>
+        <p>{{ form.value.description }}</p>
+        <p>
+          {{ form.value.street }}, {{ form.value.city }} {{ form.value.state }},
+          {{ form.value.zip }}
+        </p>
+      </section>
+      <img src="{{ img }}" />
+    </div>
+    <div class="btn-group centered-horizontal">
+      <button class="primary-btn" (click)="prev()">Previous</button>
+      <button class="primary-btn" (click)="editHotel()">Update Hotel</button>
+    </div>
+  </div>
+  }}
+
+  <p-steps
+    id="stepper"
+    [model]="steps"
+    [readonly]="true"
+    [activeIndex]="activeIndex"
+    (activeIndexChange)="onActiveIndexChange($event)"
+  ></p-steps>
+</div>

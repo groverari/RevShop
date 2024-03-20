@@ -1,0 +1,33 @@
+<div id="bookingComponentWrapper" [hidden]=hideSelf style="margin: 30px">
+  @if(this.booking){
+    <p-card header="{{hotel?.name}}" subheader="{{booking.roomId}}" [style]="{ width: '360px'}">
+      <ng-template pTemplate="header">
+          <img alt="Room Picture" [src]=hotel?.img />
+      </ng-template>
+      <p>
+          @if(hotel){
+            {{hotel.description}}
+          }
+          @else {Description not found}
+      </p>
+      <p><b>Stay: From </b>{{booking.checkIn}}<b> to </b>{{booking.checkOut}}</p>
+      <p>Rooms Booked: {{booking.numRooms}}</p>
+      <ng-template pTemplate="footer">
+        @if(booking.booking_id){
+          @if(booking.status === "pending"){
+            <p-button label="Accept" icon="pi pi-check" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em', 'background-color':'green'}" (click)="acceptBooking(booking.booking_id)"></p-button>
+            <p-button label="Reject" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em', 'background-color':'red'}" (click)="rejectBooking(booking.booking_id)"></p-button>
+          }
+          @else{
+            <b>Status: </b> {{booking.status}}
+            <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em', 'background-color':'red'}" (click)="cancelBooking(booking.booking_id)"></p-button>
+          }
+        }
+      </ng-template>
+  </p-card>
+  }
+  @else {
+    <p>Booking cannot be displayed</p>
+  }
+</div>
+
