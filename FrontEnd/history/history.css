@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+#history {
+  display: flex;
+  flex-flow: row wrap;
+}
+.order {
+  display: flex;
+  width: 45%;
+  justify-content: space-around;
+  align-items: center;
+  border: 4px solid rgb(230, 51, 233);
+  border-radius: 10px;
+  margin: 10px;
+}

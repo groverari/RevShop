@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revshop</title>
+
+    <link rel="stylesheet" href="./login-style.css" />
+    <link rel="stylesheet" href="../global.style.css" />
+    <script src="./login.js"></script>
+    <script src="../global scripts/loader.js"></script>
+  </head>
+  <body>
+    <h1 class="page-title glass">RevShop</h1>
+
+    <div id="form" class="glass">
+      <span id="error"></span><br />
+      <div class="form-entry">
+        <label for="username">Username: </label>
+        <input type="text" id="username" />
+      </div>
+      <br />
+      <div class="form-entry">
+        <label for="password">Password: </label>
+        <input type="password" id="password" />
+      </div>
+      <br />
+      <button id="login-btn" onclick="login()" value="Login">Login</button>
+    </div>
+    <br />
+
+    <a class="glass" id="sign-up-btn" href="../registration/registration.html"
+      >Don't Have an Account? <br /><b>Sign Up Now</b></a
+    >
+
+    <div class="loader"></div>
+  </body>
+</html>

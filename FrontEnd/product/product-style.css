@@ -1,0 +1,45 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+#product {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+#product_id {
+  font-size: 50px;
+}
+#product_price,
+#product_details {
+  font-size: 30px;
+}
+#product_img {
+  height: 500px;
+}
+
+#error {
+  color: red;
+}
+
+.review {
+  border: 2px solid black;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 10px;
+}
+
+#other-info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: center;
+}
+#user-review {
+  width: 75%;
+}
+.btn-group {
+  display: flex;
+  column-gap: 30px;
+}

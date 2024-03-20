@@ -1,0 +1,96 @@
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+#search-bar {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 5px 10px;
+  display: flex;
+  height: 30px;
+}
+
+.search {
+  border: none;
+  margin-left: 5px;
+  background-color: rgba(0, 0, 0, 0);
+  outline: 0;
+}
+#search-box.open {
+  animation: onClick 1s ease-in-out;
+  width: 350px;
+}
+#search-bar.open {
+  animation: onClick 1.5s ease-in-out;
+  width: 200;
+}
+#search-box.close {
+  animation: closeClick 1s ease-in-out;
+  width: 50px;
+}
+#search-bar.close {
+  animation: closeClick 1s ease-in-out;
+  width: 100px;
+}
+
+.search-btn {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid rgb(230, 51, 233);
+  border-radius: 8px;
+}
+.search-btn:hover {
+  background-color: rgb(230, 51, 233);
+  color: white;
+}
+
+.search-btn.open {
+  visibility: visible;
+  animation: showBtn 1s ease-in-out;
+}
+
+.search-btn.close {
+  animation: hideBtn 1s ease-in-out;
+  visibility: hidden;
+}
+
+@keyframes closeClick {
+  from {
+    width: 400px;
+  }
+  to {
+    width: 100px;
+  }
+}
+@keyframes onClick {
+  from {
+    width: 99px;
+  }
+  to {
+    width: 400px;
+  }
+}
+
+@keyframes showBtn {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes hideBtn {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

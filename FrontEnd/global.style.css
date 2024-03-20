@@ -1,0 +1,153 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+#logo {
+  width: 200px;
+  top: 0;
+}
+
+/*
+  Loading screen between pages
+*/
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+  transition: opacity 1s, visibility 1s;
+}
+
+.loader-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.loader::after {
+  content: "";
+  width: 75px;
+  height: 75px;
+  border: 15px solid aliceblue;
+  border-top-color: rgb(22, 91, 240);
+  border-radius: 50%;
+  animation: loading 0.5s ease infinite;
+}
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* The Modal */
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  width: 450px;
+  padding: 1.3rem;
+  min-height: 250px;
+  position: absolute;
+  top: 20%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  z-index: 2;
+}
+.modal .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal p {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0.4rem 0 0.2rem;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+.hidden {
+  display: none;
+}
+
+/*
+  SIDE NAV STYLES
+*/
+
+aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  float: left;
+  width: 15%;
+  min-width: 100px;
+  height: 100vh;
+}
+#side-nav {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  list-style: none;
+  padding-left: 5px;
+}
+li {
+  padding: 5px;
+  background-color: rgb(237, 197, 238);
+  border-radius: 8px;
+  text-decoration: none;
+}
+.active {
+  background-color: rgb(230, 51, 233);
+}
+a.nav-link {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+main {
+  float: right;
+  width: 85%;
+  max-width: max-content - 100px;
+}
+
+#title {
+  margin: 0;
+  width: 100%;
+  padding: 10px;
+  padding-top: 30px;
+  background-color: rgb(237, 197, 238);
+  text-align: center;
+  font-size: 40px;
+}
+
+.btn {
+  border: 2px solid rgb(230, 51, 233);
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 8px;
+  padding: 5px;
+  transform: background-color, border;
+}
+.btn:hover {
+  transition: ease-in-out 0.15s;
+  background-color: rgb(230, 51, 233);
+  scale: 1.2;
+  color: white;
+}

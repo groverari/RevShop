@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="./registration-style.css" />
+    <link rel="stylesheet" href="../global.style.css" />
+    <script src="./registration.js"></script>
+    <script src="../global scripts/loader.js"></script>
+  </head>
+  <body>
+    <h1>RevShop</h1>
+
+    <form id="reg-form">
+      <h2>Welcome to Revshop!</h2>
+      <p>
+        Thank you for choosing RevShop. Please fill out the following form to
+        gain access to our wide variety of products.
+      </p>
+      <p id="error" style="color: red"></p>
+      <div class="form-entry">
+        <label for="first_name">First Name</label>
+        <input type="text" name="first_name" placeholder="EX: John" required />
+      </div>
+      <div class="form-entry">
+        <label for="last_name">Last Name</label>
+        <input type="text" name="last_name" placeholder="EX: Smith" required />
+      </div>
+      <div class="form-entry">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="EX: jsmith@revature.net"
+          required
+        />
+      </div>
+      <div class="form-entry">
+        <label for="password">Password</label>
+        <input type="password" name="password" required />
+      </div>
+      <div class="form-entry">
+        <label for="pass2">Confirm Password</label>
+        <input type="password" name="pass2" id="pass2" required />
+      </div>
+
+      <input type="submit" id="sign-up-btn" value="Sign Up!" />
+    </form>
+    <div class="loader"></div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+.cart-item {
+  display: flex;
+  column-gap: 30px;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 10px;
+}
+.image {
+  height: 100px;
+  align-self: flex-start;
+}
+.info-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20%;
+  width: 60vw;
+  justify-content: space-evenly;
+  font-size: 30px;
+}
+h6 {
+  margin: 20px;
+}
+.btn-group {
+  display: flex;
+  column-gap: 30px;
+  justify-content: flex-end;
+}
+input {
+  margin: 10px;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  font-size: 30px;
+  border-radius: 10px;
+}
+#header {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  align-items: center;
+  padding: 10px;
+}
+#checkout {
+  height: 50px;
+  font-size: 20px;
+}
