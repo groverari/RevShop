@@ -1,8 +1,0 @@
-<div id="booking-list" style="display:flex; flex-wrap:wrap">
-  @for(booking of bookings; track $index){
-    <app-user-booking [inputBooking] = "bookings[$index]"></app-user-booking>
-  }
-  @empty {
-    <p>You have no bookings at this time</p>
-  }
-</div>
